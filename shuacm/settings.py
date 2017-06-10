@@ -25,7 +25,7 @@ SECRET_KEY = 'u-r!=6*r)j4#!+fh1rgbwna-r9r1^m3)=&oh2sr)6v@-sa&!vr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'acm.lonelam.me']
+ALLOWED_HOSTS = ['127.0.0.1', 'acm.lonelam.me', 'acm.digested.site']
 
 
 # Application definition
