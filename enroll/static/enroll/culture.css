@@ -1,0 +1,10 @@
+.logo-culture>ul{
+  list-style: none;
+}
+.logo-culture>h1{
+  text-align: center;
+}
+.logo-culture>ul>li{
+  float: left;
+  padding-left: 20px;
+}

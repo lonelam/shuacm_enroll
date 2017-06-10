@@ -1,0 +1,30 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'enroll/culture.css'%}" />
+<div class = "logo-culture">
+  <h1 id = "logo-culture-headline"> 上海大学ACM集训队暑期集训</h1>
+  <ul id = "logo-culture-wrapper">
+    <li>
+      <img src="{%static 'enroll/acm_a.png'%}">
+      <h3>思考</h3>
+      <p>遇到问题先想想</p>
+    </li>
+    <li>
+      <img src="{%static 'enroll/acm_b.png'%}">
+      <h3>想通了</h3>
+      <p>灵光一闪思路现</p>
+    </li>
+    <li>
+      <img src="{%static 'enroll/acm_c.png'%}">
+      <h3>AC</h3>
+      <p>完成代码 AC</p>
+    </li>
+  </ul>
+</div>
+<form action="/accept/" method = "post" style = "text-align:center">
+  {%csrf_token%}
+  <label for="name">姓名</label> <input type = "text" name = "name" id = "name" /><br />
+  <label for="stuno">学号</label> <input type = "text" name = "stuno" id = "stuno" /><br />
+  <label for="email">邮箱</label> <input type = "text" name = "email" id = "email" /><br />
+  <label for="phone">手机号</label> <input type = "text" name = "phone" id = "phone" /><br />
+  <input type="submit" value = "我要打ACM"/><br />
+</form>
