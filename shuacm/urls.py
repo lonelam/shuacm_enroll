@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name= "index"),
     url(r'^accept/', views.accept, name="accept"),
+    url(r'^output/', views.output, name="output"),
 ]

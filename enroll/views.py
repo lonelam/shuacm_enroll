@@ -21,4 +21,4 @@ def accept(request):
     return HttpResponse('Accepted!')
 def output(request):
     Acmform = Acmer.objects.all()
-    return render(request, 'enroll/output.html', Acmform)
+    return render(request, 'enroll/output.html', {'Acmform': Acmform})
