@@ -19,3 +19,6 @@ def accept(request):
     new_acmer = Acmer(name = request.POST['name'], phone = int(request.POST['phone']), email = request.POST['email'], stuno = request.POST['stuno'])
     new_acmer.save()
     return HttpResponse('Accepted!')
+def output(request):
+    Acmform = Acmer.objects.all()
+    return render(request, 'enroll/output.html', Acmform)
