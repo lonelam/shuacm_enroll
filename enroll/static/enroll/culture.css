@@ -1,4 +1,7 @@
-
+form{
+  float: left;
+  margin-left: 20%;
+}
 form.infoform input{
   margin-top: 20px;
 }
