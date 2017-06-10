@@ -28,3 +28,14 @@
   <label for="phone">手机号</label> <input type = "text" name = "phone" id = "phone" /><br />
   <input type="submit" value = "我要打ACM"/><br />
 </form>
+<table class = "lecture-table" border = "1">
+  <tr>
+  </tr>
+  {% for lecture in lectable %}
+  <tr>
+      <td>{{lecture.topic}}</td>
+      <td>{{lecture.leader}}</td>
+      <td>{{lecture.starttime}}</td>
+  </tr>
+  {% endfor %}
+</table>

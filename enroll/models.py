@@ -9,3 +9,9 @@ class Acmer(models.Model):
     email = models.EmailField()
     def __str__(self):
         return self.name + ',' + str(self.stuno)
+
+class Lecture(models.Model):
+    topic = models.CharField(max_length = 200)
+    leader  = models.ForeignKey(Acmer, related_name = 'PublishedLec')
+    members = models.ManyToManyField(Acmer, related_name = 'PaticipatedLec')
+    starttime = models.DateTimeField()

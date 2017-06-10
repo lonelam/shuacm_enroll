@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.validators import validate_email, ValidationError
-from .models import Acmer
+from .models import Acmer, Lecture
 # Create your views here.
 def index(request):
-    return render(request, 'enroll/index.html')
+    lectable = Lecture.objects.all()
+    return render(request, 'enroll/index.html', {'lectable':lectable})
 def accept(request):
     if len(request.POST['name'])== 0 or len(request.POST['name']) > 10:
         return HttpResponse('你的名字是不是太长了？')
