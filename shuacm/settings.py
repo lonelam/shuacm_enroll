@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'u-r!=6*r)j4#!+fh1rgbwna-r9r1^m3)=&oh2sr)6v@-sa&!vr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['acm.lonelam.me']
+ALLOWED_HOSTS = ['127.0.0.1', 'acm.lonelam.me']
 
 
 # Application definition
@@ -118,5 +118,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = 'http://acm.lonelam.me/static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
