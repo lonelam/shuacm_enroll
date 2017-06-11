@@ -30,11 +30,14 @@
 </form>
 <table class = "lecture-table" border = "1">
   <tr>
+      <td>主题</td>
+      <td>主讲人</td>
+      <td>时间</td>
   </tr>
   {% for lecture in lectable %}
   <tr>
       <td>{{lecture.topic}}</td>
-      <td>{{lecture.leader}}</td>
+      <td>{{lecture.leader.name}}</td>
       <td>{{lecture.starttime}}</td>
   </tr>
   {% endfor %}
