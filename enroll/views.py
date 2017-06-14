@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.core.validators import validate_email, ValidationError
 from .models import Acmer, Lecture
 # Create your views here.
@@ -22,4 +22,5 @@ def accept(request):
     return HttpResponse('Accepted!')
 def output(request):
     Acmform = Acmer.objects.all()
-    return render(request, 'enroll/output.html', {'Acmform': Acmform})
+    Acmform = {i.stuno : i for i in Acmform}
+    return render(request, 'enroll/output.html', {'Acmform': Acmform.values})
