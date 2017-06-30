@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.validators import validate_email, ValidationError
+from django.db import IntegrityError
 from .models import Acmer, Lecture
 # Create your views here.
 
@@ -21,9 +22,14 @@ def accept(request):
         return render(request, 'enroll/index.html', {'ok': 2, 'msg':'邮箱不合法'})
     if len(request.POST['stuno']) > 10:
         return render(request, 'enroll/index.html', {'ok': 2, 'msg':'您学号是不是太长了？'})
-    new_acmer = Acmer(name=request.POST['name'], phone=request.POST['phone'], email = request.POST['email'], stuno = request.POST['stuno'],
-                      major=request.POST['major'])
-    new_acmer.save()
+    try:
+        new_acmer = Acmer(name=request.POST['name'], phone=request.POST['phone'], email=request.POST['email'],
+                          stuno=request.POST['stuno'],
+                          major=request.POST['major'])
+        #Acmer.objects.get(stuno=request.POST['stuno'])
+        new_acmer.save()
+    except IntegrityError:
+        return render(request, 'enroll/index.html', {'ok': 2, 'msg': '学号或手机已存在'})
     return render(request, 'enroll/index.html', {'ok': 1})
 
 
