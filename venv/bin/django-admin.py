@@ -1,5 +1,0 @@
-#!/home/handora/文档/shuacm_enroll/venv/bin/python3
-from django.core import management
-
-if __name__ == "__main__":
-    management.execute_from_command_line()
