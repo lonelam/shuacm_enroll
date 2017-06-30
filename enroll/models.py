@@ -6,7 +6,7 @@ from django.utils import timezone
 class Acmer(models.Model):
 
     name = models.CharField(max_length = 20)
-    stuno = models.CharField(max_length=20)
+    stuno = models.CharField(max_length=20, primary_key=True, unique=True)
     major = models.CharField(max_length = 20)
     phone = models.CharField(max_length = 12)
     email = models.EmailField()
