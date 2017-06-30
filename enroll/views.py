@@ -21,7 +21,7 @@ def accept(request):
         return render(request, 'enroll/index.html', {'ok': 2, 'msg':'邮箱不合法'})
     if len(request.POST['stuno']) > 10:
         return render(request, 'enroll/index.html', {'ok': 2, 'msg':'您学号是不是太长了？'})
-    new_acmer = Acmer(name=request.POST['name'], phone=request.POST['phone'], email = request.POST['email'], stuno = request.POST['stuno'],
+    new_acmer = Acmer(name=request.POST['name'], phone=request.POST['phone'], email=request.POST['email'], stuno = request.POST['stuno'],
                       major=request.POST['major'])
     new_acmer.save()
     return render(request, 'enroll/index.html', {'ok': 1})
