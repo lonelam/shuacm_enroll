@@ -1,44 +1,198 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'enroll/culture.css'%}" />
-<div class = "logo-culture">
-  <h1 id = "logo-culture-headline"> 上海大学ACM集训队暑期集训</h1>
-  <ul id = "logo-culture-wrapper">
-    <li>
-      <img src="{%static 'enroll/acm_a.png'%}">
-      <h3>思考</h3>
-      <p>遇到问题先想想</p>
-    </li>
-    <li>
-      <img src="{%static 'enroll/acm_b.png'%}">
-      <h3>想通了</h3>
-      <p>灵光一闪思路现</p>
-    </li>
-    <li>
-      <img src="{%static 'enroll/acm_c.png'%}">
-      <h3>AC</h3>
-      <p>完成代码 AC</p>
-    </li>
-  </ul>
-</div>
-<form class = "infoform" action="/accept/" method = "post" style = "text-align:center">
-  {%csrf_token%}
-  <label for="name">姓名</label> <input type = "text" name = "name" id = "name" /><br />
-  <label for="stuno">学号</label> <input type = "text" name = "stuno" id = "stuno" /><br />
-  <label for="email">邮箱</label> <input type = "text" name = "email" id = "email" /><br />
-  <label for="phone">手机号</label> <input type = "text" name = "phone" id = "phone" /><br />
-  <input type="submit" value = "我要打ACM"/><br />
-</form>
-<table class = "lecture-table" border = "1">
-  <tr>
-      <td>主题</td>
-      <td>主讲人</td>
-      <td>时间</td>
-  </tr>
-  {% for lecture in lectable %}
-  <tr>
-      <td>{{lecture.topic}}</td>
-      <td>{{lecture.leader.name}}</td>
-      <td>{{lecture.starttime}}</td>
-  </tr>
-  {% endfor %}
-</table>
+<link rel="stylesheet" href="{% static 'css/bootstrap.css'%}" />
+<script src="{% static 'js/bootstrap.js' %}"></script>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>ACM CONTEST</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="{% static 'css/landing-page.css' %}" rel="stylesheet">
+
+<!-- Custom Fonts -->
+<link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+{% if ok == 1 %}
+        <div class="alert alert-success alert-dismissable" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            Well done! 申请成功
+        </div>
+        {% elif ok == 2 %}
+        <div class="alert alert-danger alert-dismissable" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            Something wrong! {{ msg }}
+        </div>
+{% endif %}
+
+<body>
+    <!-- Header -->
+    <a name="about"></a>
+    <div class="intro-header">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <h1>上海大学acm比赛报名</h1>
+                        <h3>通向成功之路</h3>
+                        <hr class="intro-divider">
+                        <ul class="list-inline intro-social-buttons">
+                            <li>
+                                <a href="http://www.shu.edu.cn/IndexPage.html" class="btn btn-default btn-lg"> <span class="network-name">上海大学官网</span></a>
+                            </li>
+                            <li>
+                                <a href="#app" class="btn btn-default btn-lg"> <span class="network-name">报名</span></a>
+                            </li>
+                            <li>
+                                <a href="#app" class="btn btn-default btn-lg"> <span class="network-name">SHUOJ</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.intro-header -->
+
+    <!-- Page Content -->
+    <div  id="app">
+
+
+
+    <div class = "logo-culture">
+    <br />
+    <br />
+    <br />
+      <ul id = "logo-culture-wrapper">
+        <li>
+          <img src="{%static 'enroll/acm_a.png'%}">
+          <h3>思考</h3>
+          <p>遇到问题先想想</p>
+        </li>
+
+        <li>
+          <img src="{%static 'enroll/acm_b.png'%}">
+          <h3>想通了</h3>
+          <p>灵光一闪思路现</p>
+        </li>
+
+        <li>
+          <img src="{%static 'enroll/acm_c.png'%}">
+          <h3>AC</h3>
+          <p>完成代码 AC</p>
+        </li>
+
+      </ul>
+    </div>
+    <form action="/accept/" method = "post" >
+      {%csrf_token%}
+        <div class="form-group">
+            <label for="name">姓名</label>
+            <input type="text" class="form-control" id="name" name = "name" placeholder="请输入您的姓名">
+        </div>
+        <div class="form-group">
+            <label for="stuno">学号</label>
+            <input type="text" class="form-control" id="stuno" name = "stuno" placeholder="请输入您的学号">
+        </div>
+        <div class="form-group">
+            <label for="major">专业</label>
+            <select class="form-control" id="major" name = "major">
+              <option>计算机</option>
+              <option>数学</option>
+              <option>通信</option>
+              <option>机自</option>
+              <option>其他理工</option>
+              <option>人文</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="email">邮箱</label>
+            <input type="email" class="form-control" id="email" name = "email" placeholder="请输入您的邮箱">
+        </div>
+        <div class="form-group">
+            <label for="phone">手机</label>
+            <input type="text" class="form-control" id="phone" name = "phone" placeholder="请输入您的手机号">
+        </div>
+    {#  <label for="name">姓名</label> <input type = "text" name = "name" id = "name" /><br />#}
+    {#  <label for="stuno">学号</label> <input type = "text" name = "stuno" id = "stuno" /><br />#}
+    {#  <label for="major">专业</label> <input type = "text" name = "major" id = "major" /><br />#}
+    {#  <label for="email">邮箱</label> <input type = "text" name = "email" id = "email" /><br />#}
+    {#  <label for="phone">手机号</label> <input type = "text" name = "phone" id = "phone" /><br />#}
+      <button type="submit" class="btn btn-success">我要打ACM!</button>
+    </form>
+    <table class = "lecture-table" border = "1">
+      <tr>
+      </tr>
+      {% for lecture in lectable %}
+      <tr>
+          <td>{{lecture.topic}}</td>
+          <td>{{lecture.leader}}</td>
+          <td>{{lecture.starttime}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="https://github.com/Handora">About</a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery.js' %}"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
