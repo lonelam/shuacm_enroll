@@ -30,6 +30,7 @@ def accept(request):
 
 
 def output(request):
+
     Acmform = Acmer.objects.all()
     Acmform = {i.stuno: i for i in Acmform}
     return render(request, 'enroll/output.html', {'Acmform': Acmform.values})
