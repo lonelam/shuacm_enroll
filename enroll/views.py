@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.validators import validate_email, ValidationError
 from .models import Acmer, Lecture
@@ -23,6 +23,7 @@ def accept(request):
         return render(request, 'enroll/index.html', {'ok': 2, 'msg':'您学号是不是太长了？'})
     new_acmer = Acmer(name=request.POST['name'], phone=request.POST['phone'], email = request.POST['email'], stuno = request.POST['stuno'],
                       major=request.POST['major'])
+
     new_acmer.save()
     return render(request, 'enroll/index.html', {'ok': 1})
 
