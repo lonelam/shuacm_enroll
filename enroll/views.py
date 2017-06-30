@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.validators import validate_email, ValidationError
 from .models import Acmer, Lecture
+from django.conf.urls.static import static
 # Create your views here.
 
 

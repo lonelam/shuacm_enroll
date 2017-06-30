@@ -1,4 +1,7 @@
-
+form{
+  float: left;
+  margin-left: 20%;
+}
 form.infoform input{
   margin-top: 20px;
 }
@@ -11,5 +14,5 @@ form.infoform input{
 }
 .logo-culture>ul>li{
   float: left;
-  padding-left: 20px;
+  padding-left: 100px;
 }
